@@ -8,6 +8,8 @@ public class Movement : MonoBehaviour
     private Vector2 _input;
     private CharacterController _characterController;
     private Vector3 _direction;
+   // public Animator anim;
+
 
     #region Variables: Movement
     [SerializeField] private float speed;
@@ -56,6 +58,7 @@ public class Movement : MonoBehaviour
 
     private void ApplyRotation()
     {
+
         if (_input.sqrMagnitude == 0) return;
 
         var targetAngle = Mathf.Atan2(_direction.x, _direction.z) * Mathf.Rad2Deg;
