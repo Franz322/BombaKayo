@@ -175,14 +175,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Look",
-                    "type": "Value",
-                    "id": "db322007-6e53-4170-ae00-4505e8d43567",
-                    "expectedControlType": "Vector3",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "Jump",
                     "type": "Value",
                     "id": "44d457ea-6ad2-46b4-a777-a61270a5f016",
@@ -293,39 +285,6 @@
                     "processors": "",
                     "groups": "Joystick",
                     "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "87a3fb5a-79b7-47f2-ae88-c05ce3bb4a99",
-                    "path": "<Gamepad>/rightStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "Look",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "204049c9-8ad8-43f4-b2ab-2f2fcf00bd94",
-                    "path": "<Pointer>/delta",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse;Touch",
-                    "action": "Look",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "bc176658-fa0f-4892-bc49-b9d174bd79ba",
-                    "path": "<Joystick>/{Hatswitch}",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Joystick",
-                    "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

@@ -50,7 +50,7 @@ public class ThrowBomb : MonoBehaviour
         {
             bombRb.isKinematic = false; // Enable physics after dropping
             bombRb.AddForce(transform.forward * throwForce, ForceMode.Impulse); // Give a slight push forward
-            StartCoroutine(ResetKinematic());
+            //StartCoroutine(ResetKinematic());
         }
 
         bomb = null; // Reset detected bomb
