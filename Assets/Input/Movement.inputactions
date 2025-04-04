@@ -183,18 +183,26 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Fire",
+                    "name": "Jump",
+                    "type": "Value",
+                    "id": "44d457ea-6ad2-46b4-a777-a61270a5f016",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Throw",
                     "type": "Button",
-                    "id": "67364482-5f2e-447c-bf77-604f0f314f3e",
+                    "id": "091a5136-4ded-4afd-9b84-2e3605dc9aaa",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 },
                 {
-                    "name": "Jump",
-                    "type": "Value",
-                    "id": "44d457ea-6ad2-46b4-a777-a61270a5f016",
-                    "expectedControlType": "",
+                    "name": "PickUp",
+                    "type": "Button",
+                    "id": "0ef43c9f-add8-485b-9a7d-77250890f901",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 }
@@ -323,67 +331,34 @@
                 },
                 {
                     "name": "",
-                    "id": "0fb55dd2-f63e-4334-b22a-fd129b457084",
-                    "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "Fire",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d7fa64ca-9f59-42f1-be8f-cc7671df1db7",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Fire",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7ff9cad9-e76c-4cd6-9991-e957196ffe01",
-                    "path": "<Touchscreen>/primaryTouch/tap",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Touch",
-                    "action": "Fire",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9919a90d-0eaa-423e-884e-f1fe32ea0a25",
-                    "path": "<Joystick>/trigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Joystick",
-                    "action": "Fire",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "372f2a54-2ccb-48e9-8f27-566d50981e24",
-                    "path": "<XRController>/{PrimaryAction}",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "XR",
-                    "action": "Fire",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "036cb658-efff-4411-83ef-24a848dc6c88",
                     "path": "<Keyboard>/numpad0",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "67ab98f4-8900-4e81-baef-0e4995e93be5",
+                    "path": "<Keyboard>/numpadEnter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Throw",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5ee16680-2bfb-43f2-815e-a937b00c9c54",
+                    "path": "<Keyboard>/numpad3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PickUp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

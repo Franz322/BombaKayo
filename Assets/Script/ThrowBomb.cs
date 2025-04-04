@@ -24,6 +24,7 @@ public class ThrowBomb : MonoBehaviour
             return;
         }
 
+
         isCarrying = true;
         bombRb = bomb.GetComponent<Rigidbody>();
         bomb.SetParent(carryPosition);
@@ -39,11 +40,19 @@ public class ThrowBomb : MonoBehaviour
     
     public void DropBomb()
     {
-
+       
         if(bomb == null)
         {
             return;
         }
+        Sticky stickyBomb = bomb.GetComponent<Sticky>();
+        if (stickyBomb != null )
+        {
+            stickyBomb.canStick = true;
+            
+        }
+        
+
 
         isCarrying = false;
         bomb.SetParent(null);
@@ -58,6 +67,7 @@ public class ThrowBomb : MonoBehaviour
         bomb = null; // Reset detected bomb
     }
 
+    
     private IEnumerator ResetKinematic()
     {
         yield return new WaitForSeconds(2f);
@@ -72,8 +82,11 @@ public class ThrowBomb : MonoBehaviour
 
     void DetectNearbyBomb()
     {
+
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, detectionRange);
         bomb = null; // Reset detected bomb
+
+        
 
         float closestDistance = detectionRange;
 
@@ -86,8 +99,21 @@ public class ThrowBomb : MonoBehaviour
                 {
                     closestDistance = distance;
                     bomb = col.transform;
+
+                    Sticky stickyBomb = bomb.GetComponent<Sticky>();
+                    if (stickyBomb != null)
+                    {
+                        if (stickyBomb.hasStuck) 
+                        {
+                           
+                            bomb = null; 
+                        }
+                    }
                 }
+
             }
         }
+
+       
     }
 }
