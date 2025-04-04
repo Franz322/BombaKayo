@@ -12,6 +12,7 @@ public class ThrowBomb : MonoBehaviour
 
     public float detectionRange = 3f;
     public float throwForce;
+
     void Update()
     {
         DetectNearbyBomb();
@@ -20,10 +21,7 @@ public class ThrowBomb : MonoBehaviour
     public void PickUpBomb()
     {
         if (bomb == null)
-        {
             return;
-        }
-
 
         isCarrying = true;
         bombRb = bomb.GetComponent<Rigidbody>();
@@ -32,28 +30,19 @@ public class ThrowBomb : MonoBehaviour
         bomb.localRotation = Quaternion.identity;
 
         if (bombRb != null)
-        {
             bombRb.isKinematic = true; // Disable physics while carrying
-        }
     }
 
     
     public void DropBomb()
     {
-       
-        if(bomb == null)
-        {
+        if(bomb == null || !isCarrying)
             return;
-        }
+
         Sticky stickyBomb = bomb.GetComponent<Sticky>();
         if (stickyBomb != null )
-        {
             stickyBomb.canStick = true;
             
-        }
-        
-
-
         isCarrying = false;
         bomb.SetParent(null);
 
@@ -86,34 +75,22 @@ public class ThrowBomb : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, detectionRange);
         bomb = null; // Reset detected bomb
 
-        
-
         float closestDistance = detectionRange;
 
         foreach (Collider col in hitColliders)
         {
-            if (col.CompareTag("Bomb"))
+            if (!col.CompareTag("Bomb")) continue; // Skip already stuck if object is not bomb
+
+            Sticky stickyBomb = col.GetComponent<Sticky>();
+            if (stickyBomb != null && stickyBomb.hasStuck) continue; // Skip already stuck bombs
+
+            float distance = Vector3.Distance(transform.position, col.transform.position);
+            if (distance < closestDistance)
             {
-                float distance = Vector3.Distance(transform.position, col.transform.position);
-                if (distance < closestDistance)
-                {
-                    closestDistance = distance;
-                    bomb = col.transform;
-
-                    Sticky stickyBomb = bomb.GetComponent<Sticky>();
-                    if (stickyBomb != null)
-                    {
-                        if (stickyBomb.hasStuck) 
-                        {
-                           
-                            bomb = null; 
-                        }
-                    }
-                }
-
+                closestDistance = distance;
+                bomb = col.transform;
             }
         }
 
-       
     }
 }
