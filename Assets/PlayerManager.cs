@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -8,19 +9,55 @@ public class PlayerManager : MonoBehaviour
     public Transform spawnPoint1;
     public Transform spawnPoint2;
 
-    public IEnumerator SpawnPlayer(GameObject player)
+    public TextMeshProUGUI player1ScoreUI;
+    public TextMeshProUGUI player2ScoreUI;
+
+    private int player1Score = 0;
+    private int player2Score = 0;
+
+    private bool isDead = false;
+
+
+    private void Start()
     {
+        DisplayScore();
+    }
+    private void DisplayScore()
+    {
+        player1ScoreUI.text = player1Score.ToString();
+        player2ScoreUI.text = player2Score.ToString();
+    }
+
+    public IEnumerator SpawnPlayer(GameObject player, int playerNumber)
+    {
+        if(playerNumber == 1)
+            player2Score++;
+        else
+            player1Score++;
+        DisplayScore();
+
         yield return new WaitForSeconds(0.12f);
         player.SetActive(false);
         yield return new WaitForSeconds(3f);
-        player.transform.position = spawnPoint1.position;
+       
+
+        if (playerNumber == 1)
+            player.transform.position = spawnPoint1.position;
+        else
+            player.transform.position = spawnPoint2.position;
+
         player.SetActive(true);
+        isDead = false;
     }
 
-    public void PlayerDie(GameObject player)
+    public void PlayerDie(GameObject player, int playerNumber) 
     {
-        
-        StartCoroutine(SpawnPlayer(player));
+        if (!isDead)
+        {
+            isDead = true;
+            StartCoroutine(SpawnPlayer(player, playerNumber));
+        }
+       
 
     }
 

@@ -8,8 +8,6 @@ public class Timer : MonoBehaviour
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] float remainingTime;
 
-
-
     private void Update()
     {
         if(remainingTime > 0)
