@@ -7,6 +7,7 @@ public class Bomb : MonoBehaviour
     public SphereCollider bombCollider;
     public GameObject bombVFX;
     public float bombCountDown;
+   
     private IEnumerator BombCountDown()
     {
         yield return new WaitForSeconds(bombCountDown);
@@ -17,6 +18,8 @@ public class Bomb : MonoBehaviour
         bombCollider.enabled = false;
         Destroy(gameObject);
     }
+
+
 
     public void TriggerBomb()
     {

@@ -5,19 +5,13 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public PlayerManager playerManager;
-    private bool isHit = false;
+    
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("BombExplosion") && !isHit)
+        if (other.CompareTag("BombExplosion"))
         {
-            isHit = true;
-            playerManager.PlayerDie(gameObject);
-            Debug.Log("jahsdkjhasd");
+            playerManager.PlayerDie(gameObject);  
         }
     }
 
-    private void Awake()
-    {
-        isHit = false;
-    }
 }

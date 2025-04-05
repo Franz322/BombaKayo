@@ -7,14 +7,6 @@ public class Sticky : MonoBehaviour
     public bool hasStuck = false;
     public bool canStick = false;
 
-    public float timeBeforeDestroy = 5f;  // Time in seconds before the object is destroyed after being thrown
-
-    private void Start()
-    {
-        // Optional: If you want to destroy the object immediately after being thrown, you can use this line.
-        // StartCoroutine(DestroyAfterTime(timeBeforeDestroy)); // Optional, only if you want to destroy after a delay.
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (hasStuck) return;
@@ -34,21 +26,7 @@ public class Sticky : MonoBehaviour
             gameObject.transform.SetParent(other.transform, true);
             hasStuck = true;
 
-
-            StartCoroutine(DestroyAfterTime(timeBeforeDestroy));
         }
     }
 
-    
-
-    private IEnumerator DestroyAfterTime(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        Destroy(gameObject);
-    }
-
-    private void OnDestroy()
-    {
-        StopAllCoroutines();
-    }
 }
