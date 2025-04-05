@@ -22,6 +22,8 @@ public class ThrowBomb : MonoBehaviour
     {
         if (bomb == null)
             return;
+        if (isCarrying == true)
+            return;
 
         isCarrying = true;
         bombRb = bomb.GetComponent<Rigidbody>();
@@ -48,6 +50,10 @@ public class ThrowBomb : MonoBehaviour
 
         if (bombRb != null)
         {
+            Bomb bombScript = bomb.GetComponent<Bomb>();
+            if (bombScript != null)
+                bombScript.TriggerBomb();
+
             bombRb.isKinematic = false; // Enable physics after dropping
             bombRb.AddForce(transform.forward * throwForce, ForceMode.Impulse); // Give a slight push forward
             //StartCoroutine(ResetKinematic());
