@@ -609,6 +609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dbac8361767a6f41913de74aafe51c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   speed: 15
   smoothTime: 0.05
   gravityMultiplier: 1
@@ -639,9 +640,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6199545513132296571}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 515b7b9b199b8ef46b47d1ff70c1d3e7, type: 2}
+  m_Controller: {fileID: 9100000, guid: 900799436b2ef8e45880f3ed91cfb7fd, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

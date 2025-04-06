@@ -8,7 +8,11 @@ public class Movement : MonoBehaviour
     private Vector2 _input;
     private CharacterController _characterController;
     private Vector3 _direction;
-   // public Animator anim;
+
+    public Animator anim;
+
+    private bool isPickingUp = false;
+    private bool isThrowing = false;
 
 
     #region Variables: Movement
@@ -33,6 +37,8 @@ public class Movement : MonoBehaviour
     private void Awake()
     {
         _characterController = GetComponent<CharacterController>();
+        if (anim == null)
+            anim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -40,6 +46,18 @@ public class Movement : MonoBehaviour
         ApplyGravity();
         ApplyRotation();
         ApplyMovement();
+
+        if (isPickingUp)
+        {
+            anim.SetTrigger("PickUp");  // Trigger pick up animation
+            isPickingUp = false;  // Reset flag after animation
+        }
+
+        if (isThrowing)
+        {
+            anim.SetTrigger("Throw");  // Trigger throw animation
+            isThrowing = false;  // Reset flag after animation
+        }
     }
 
     private void ApplyGravity()
@@ -86,4 +104,23 @@ public class Movement : MonoBehaviour
     }
 
     private bool IsGrounded() => _characterController.isGrounded;
+
+
+    // Function to handle bomb pickup
+    public void PickUpBomb(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            isPickingUp = true;  // Set the flag to start pick up animation
+        }
+    }
+
+    // Function to handle bomb throw
+    public void ThrowBomb(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            isThrowing = true;  // Set the flag to start throw animation
+        }
+    }
 }
