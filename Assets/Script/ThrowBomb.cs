@@ -13,17 +13,32 @@ public class ThrowBomb : MonoBehaviour
     public float detectionRange = 3f;
     public float throwForce;
 
+    bool isClickable= true;
+
     void Update()
     {
         DetectNearbyBomb();
     }
 
+    private void ResetIsClickable()
+    {
+        isClickable = true;
+    }
+
     public void PickUpBomb()
     {
+        if (!isClickable)
+            return;
+        isClickable = false;
+        Invoke("ResetIsClickable", 0.2f);
+
+       
+
         if (bomb == null)
             return;
-        if (isCarrying == true)
+        if (isCarrying == true) 
             return;
+            GetComponent<Animator>().SetTrigger("PickUp");
 
         isCarrying = true;
         bombRb = bomb.GetComponent<Rigidbody>();
@@ -38,8 +53,12 @@ public class ThrowBomb : MonoBehaviour
     
     public void DropBomb()
     {
+        
+        
+
         if(bomb == null || !isCarrying)
             return;
+            GetComponent<Animator>().SetTrigger("Throw");
 
         Sticky stickyBomb = bomb.GetComponent<Sticky>();
         if (stickyBomb != null )

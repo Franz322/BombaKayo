@@ -14,12 +14,12 @@ public class PlayerManager : MonoBehaviour
     public TextMeshProUGUI player1ScoreUI;
     public TextMeshProUGUI player2ScoreUI;
 
-    private int player1Score = 0;
-    private int player2Score = 0;
+    public int player1Score = 0;
+    public int player2Score = 0;
 
     private bool isDead = false;
 
-    public float fallThreshold = -10f;
+    public float fallThreshold = -10f; 
 
     private void Start()
     {
