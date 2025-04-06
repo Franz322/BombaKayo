@@ -7,6 +7,8 @@ public class Sticky : MonoBehaviour
     public bool hasStuck = false;
     public bool canStick = false;
 
+   
+
     private void OnTriggerEnter(Collider other)
     {
         if (hasStuck) return;

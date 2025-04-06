@@ -54,18 +54,17 @@ public class ThrowBomb : MonoBehaviour
     public void DropBomb()
     {
         
-        
 
-        if(bomb == null || !isCarrying)
+        if (bomb == null || !isCarrying)
             return;
             GetComponent<Animator>().SetTrigger("Throw");
 
         Sticky stickyBomb = bomb.GetComponent<Sticky>();
         if (stickyBomb != null )
             stickyBomb.canStick = true;
-            
-        isCarrying = false;
-        bomb.SetParent(null);
+
+            isCarrying = false;
+            bomb.SetParent(null); 
 
         if (bombRb != null)
         {
